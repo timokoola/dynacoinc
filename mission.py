@@ -4,6 +4,9 @@ from twython import Twython
 from PIL import Image
 import codecs
 import StringIO
+import random
+import os
+import argparse
 
 class TwythonHelper:
 
@@ -19,7 +22,7 @@ class TwythonHelper:
         self.api = Twython(consumerkey, consumersecret, accesstoken, accesssec)
 
 if __name__ == '__main__':
-	api = (TwythonHelper("test.keys")).api
+	api = (TwythonHelper("dynacoinc.keys")).api
 	mc = MarkovChain("./markov")
 	f = codecs.open("corpus.txt")
 	text = " ".join(f.readlines())
@@ -27,13 +30,17 @@ if __name__ == '__main__':
 	mc.generateDatabase(text)
 	status = mc.generateString()
 
-	if len(status) > 120:
-		status = status[:120]
+	if len(status) > 110:
+		status = status[:110]
 		lr = status.rfind(" ")
 		status = status[:lr] + "."
 	else:
 		status = status + "."
 
-	photo = open("image1.jpg", "rb")
+	r = random.Random()
+	lf = os.listdir(".")
+	ll = [l for l in lf if l.find("jpg") != -1]
+
+	photo = open(r.choice(ll), "rb")
 
 	api.update_status_with_media(media=photo, status=status)

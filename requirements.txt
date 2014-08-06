@@ -1,0 +1,12 @@
+Pillow==2.5.1
+PyMarkovChain==1.7.5
+distribute==0.6.49
+oauthlib==0.6.3
+requests==2.1.0
+requests-oauthlib==0.4.0
+stevedore==0.10
+twython==3.1.2
+virtualenv==1.9.1
+virtualenv-clone==0.2.4
+virtualenvwrapper==4.0
+wsgiref==0.1.2
