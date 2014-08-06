@@ -1,9 +1,7 @@
 
 from pymarkovchain import MarkovChain
 from twython import Twython
-from PIL import Image
 import codecs
-import StringIO
 import random
 import os
 import argparse
